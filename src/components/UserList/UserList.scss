@@ -1,0 +1,49 @@
+.User {
+  &_List {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &_Item {
+    border: 1px solid #CDCDCD;
+    max-width: 370px;
+    padding: 20px 20px 16px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    transition: all .3s ease;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 3px 3px 20px rgba(50, 50, 50, 0.25);
+    }
+
+    &:hover .User_Text {
+      color: #1C62CD;
+    } 
+  }
+
+  &_Title {
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 28px;
+    transition: all .3s ease;
+    margin-bottom: 20px;
+  }
+
+  &_Text {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #C4C4C4;
+    line-height: 17px;
+  }
+
+}
+
+@media (max-width: 565px) {
+  .User_Item {
+    margin-right: 0;  
+  }
+}

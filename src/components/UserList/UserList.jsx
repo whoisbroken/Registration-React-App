@@ -1,22 +1,26 @@
 import React from 'react';
+import "./UserList.scss";
 
 const UserList = ({ users }) => {
-    return (
-      <ul>
-        {users.map((user, idx) => {
-          return (
-          <li key={idx + user.userName}>
-            <p>{user.userName}</p>
-            <p>{user.userGender}</p>
-            <p>{user.userCreditCard}</p>
-            <p>{user.withLoyalty}</p>
-            <p>{user.userCoupon}</p>
-            <p>{user.dataAdded}</p>
+  return (
+    <ul className="User_List">
+      {users.map((user, idx) => {
+        return (
+          <li className="User_Item" key={idx + user.userName}>
+            <h3 className="User_Title">User {idx + 1}</h3>
+            <p className="User_Text">Name: {user.userName}</p>
+            <p className="User_Text">Gender: {user.userGender}</p>
+            <p className="User_Text">Credit card: {user.userCreditCard}</p>
+            {user.withLoyalty ?
+              <p className="User_Text">Loyalty: yes</p> : null}
+            {user.userCoupon ?
+              <p className="User_Text">Coupon: {user.userCoupon}</p> : null}
+            <p className="User_Text">date added: {user.dateAdded.toString().slice(4, 24)}</p>
           </li>
-          )
-        })}
-      </ul>
-    );
-  }
+        )
+      })}
+    </ul>
+  );
+}
 
 export default UserList;

@@ -1,0 +1,34 @@
+.Nav-List {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 15px;
+}
+
+.Nav-Item {
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+  transition: .2s all ease;
+}
+
+.Nav-Item:hover{
+  color: #fff;
+  background-color: palevioletred;
+}
+
+@media (max-width: 600px) {
+  .Nav-List {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 430px) {
+  .Nav-List {
+    flex-direction: column;
+  }
+}
+

@@ -6,7 +6,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 
 import Navigation from "../Navigation/Navigation";
 import UserList from "../UserList/UserList";
