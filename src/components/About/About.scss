@@ -1,0 +1,75 @@
+.About {
+  width: 370px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border: 1px solid #CDCDCD;
+  padding: 20px 20px 16px;
+  border-radius: 3px;
+  transition: all .3s ease;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 3px 3px 20px rgba(50, 50, 50, 0.25);
+  }
+
+  &:hover .About-Link_Text {
+    color: #1C62CD;
+  }
+
+  &-Developer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    &_Avatar {
+      margin-right: 10px;
+    }
+  }
+
+
+  &-Social {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+  }
+  &-Contacts {
+    &_Item {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+  &-Link {
+    &_Text {
+      font-size: 16px;
+      color: #C4C4C4;
+      line-height: 17px;
+    }
+  }
+
+
+
+  &_Text {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #C4C4C4;
+    line-height: 17px;
+  }
+
+}
+
+.Title {
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 28px;
+  transition: all .3s ease;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 430px) {
+  .About {
+    width: 250px;
+  }
+}

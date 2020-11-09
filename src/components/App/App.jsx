@@ -11,6 +11,7 @@ import "./App.scss";
 import Navigation from "../Navigation/Navigation";
 import UserList from "../UserList/UserList";
 import Registration from "../Registration/Registration";
+import About from "../About/About";
 
 class App extends Component {
   state = {
@@ -36,7 +37,9 @@ class App extends Component {
           <Route path="/user-list">
             <UserList users={this.state.users} />
           </Route>
-          <Route path="/about">About me</Route>
+          <Route path="/about">
+            <About />
+          </Route>
           <Route path="/">
             <Redirect to="/registration" />
           </Route>
