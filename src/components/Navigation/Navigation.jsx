@@ -1,22 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import "./Navigation.scss";
-
-
+import { NavLink } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const Navigation = () => {
 
   return (
-    <ul className="Nav-List">
-      <li className="Nav-Item">
+    <ul className="Nav-List"> 
+      <Button variant="outlined" color="primary" className="Nav-Item">
         <NavLink to="/user-list">User List</NavLink>
-      </li>
-      <li className="Nav-Item">
+      </Button>
+      <Button variant="outlined" color="primary" className="Nav-Item">
         <NavLink to="/registration">Registration</NavLink>
-      </li>
-      <li className="Nav-Item">
+      </Button>
+      <Button variant="outlined" color="primary" className="Nav-Item">
         <NavLink to="/about">About</NavLink>
-      </li>
+      </Button>
     </ul>
   );
 }

@@ -1,6 +1,23 @@
 .Registration {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  margin: 0 auto;
+  width: 182px;
+  border: 1px solid #CDCDCD;
+  padding: 20px 20px 16px;
+  border-radius: 3px;
+  transition: all .3s ease;
+  &:hover {
+    box-shadow: 3px 3px 20px rgba(50, 50, 50, 0.25);
+  }
+  &_Input {
+    &.MuiTextField-root {
+      margin-bottom: 15px;
+    }
+    &.MuiInput-root {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
 }

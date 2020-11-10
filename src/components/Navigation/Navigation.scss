@@ -6,18 +6,12 @@
 }
 
 .Nav-Item {
-  color: palevioletred;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  transition: .2s all ease;
-}
-
-.Nav-Item:hover{
-  color: #fff;
-  background-color: palevioletred;
+  &.MuiButton-root {
+    font-size: 1em;
+    margin: 1em;
+    padding: 0.25em 1em;
+    border-radius: 3px;
+  }
 }
 
 @media (max-width: 600px) {

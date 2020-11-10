@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import "./Registration.scss";
-import {Button,
-Checkbox,
-TextField,
-FormControlLabel} from '@material-ui/core';
+import {
+  Button,
+  Checkbox,
+  TextField,
+  FormControlLabel,
+  InputLabel,
+  Select,
+  MenuItem
+} from '@material-ui/core';
+
+import InputMask from "react-input-mask";
 
 const userData = {
   userName: "",
@@ -12,6 +19,18 @@ const userData = {
   withLoyalty: false,
   userCoupon: "",
   dateAdded: new Date()
+}
+
+const TextMaskCustom = (props) => {
+  const { inputRef, ...other } = props;
+
+  return (
+    <InputMask
+      {...other}
+      ref={inputRef}
+      mask={"9999 9999 9999 9999"}
+    />
+  );
 }
 
 class Registration extends Component {
@@ -33,40 +52,49 @@ class Registration extends Component {
   }
 
   handleSubmit = () => {
-    this.state.userName ? this.props.addUser(this.state) : this.setState(userData);
-    console.log(this.state)
+    this.props.addUser({ ...this.state, dateAdded: new Date() });
+    this.setState(userData);
   }
 
   render() {
     return (
-      <>
-        <div className="Registration">
+      <div>
+        <form className="Registration">
           <TextField
-            required
+            required={true}
             className="Registration_Input"
             type="text"
             name="userName"
             value={this.state.userName}
             onChange={this.handleChange}
             label="Name" />
-          <TextField
+          <InputLabel>Gender</InputLabel>
+          <select
             className="Registration_Input"
-            type="text"
-            name="userGender"
+            id="demo-simple-select"
             value={this.state.userGender}
             onChange={this.handleChange}
-            label="Gender"
-          />
+            name="userGender"
+          >
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
           <TextField
             className="Registration_Input"
-            type="text"
-            name="userCreditCard"
             value={this.state.userCreditCard}
             onChange={this.handleChange}
+            type="text"
+            name="userCreditCard"
             label="Credit Card"
-          />
+            InputProps={{
+              inputComponent: TextMaskCustom
+            }}
+          >
+          </TextField>
           <FormControlLabel
             value="top"
+            label="Loyalty"
+            labelPlacement="end"
             control={<Checkbox
               className="Registration_Input"
               type="checkbox"
@@ -75,8 +103,6 @@ class Registration extends Component {
               onChange={this.handleChange}
               color="primary"
               inputProps={{ 'aria-label': 'secondary checkbox' }} />}
-            label="Loyalty"
-            labelPlacement="top"
           />
           {this.state.withLoyalty ?
             <TextField
@@ -92,11 +118,10 @@ class Registration extends Component {
             className="Registration_Btn"
             onClick={this.handleSubmit}
             variant="outlined"
-            size="medium"
             color="primary"
           >Send</Button>
-        </div>
-      </>
+        </form>
+      </div>
     );
   }
 }

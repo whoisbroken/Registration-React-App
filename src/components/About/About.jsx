@@ -20,6 +20,11 @@ class About extends Component {
                   <span className="About-Link_Text">Telegram</span>
                 </a>
               </p>
+              <p>
+                <a href="https://github.com/whoisbroken">
+                  <span className="About-Link_Text">GitHub</span>
+                </a>
+              </p>
             </div>
           </div>
           <div className="About-Contacts">
