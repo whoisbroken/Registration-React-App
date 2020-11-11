@@ -13,9 +13,9 @@
 
   &:hover {
     box-shadow: 3px 3px 20px rgba(50, 50, 50, 0.25);
-  }
+  } 
 
-  &:hover .About-Link_Text {
+  &:hover .About-Developer_Name {
     color: #1C62CD;
   }
 
@@ -24,7 +24,14 @@
     align-items: center;
     margin-bottom: 20px;
     &_Avatar {
+      &.MuiAvatar-root {
+        background-color: #3f51b5;
+        color: #fff;
+      }
       margin-right: 10px;
+    }
+    &_Name {
+    color: #C4C4C4;
     }
   }
 
@@ -46,6 +53,10 @@
       font-size: 16px;
       color: #C4C4C4;
       line-height: 17px;
+      transition: .3s all ease;
+      &:hover {
+        color: #1C62CD;
+      }
     }
   }
 
@@ -56,6 +67,7 @@
     font-size: 16px;
     color: #C4C4C4;
     line-height: 17px;
+ 
   }
 
 }

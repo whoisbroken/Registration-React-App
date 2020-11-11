@@ -10,7 +10,8 @@ const UserList = ({ users }) => {
             <h3 className="User_Title">User {idx + 1}</h3>
             <p className="User_Text">Name: {user.userName}</p>
             <p className="User_Text">Gender: {user.userGender}</p>
-            <p className="User_Text">Credit card: {user.userCreditCard}</p>
+            {user.userCreditCard ?
+              <p className="User_Text">Credit card: {user.userCreditCard}</p> : null} 
             {user.withLoyalty ?
               <p className="User_Text">Loyalty: yes</p> : null}
             {user.userCoupon ?

@@ -36,7 +36,7 @@ const TextMaskCustom = (props) => {
 class Registration extends Component {
   constructor(props) {
     super(props);
-    this.state = { ...userData };
+    this.state = {...userData};
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -52,9 +52,37 @@ class Registration extends Component {
   }
 
   handleSubmit = () => {
-    this.props.addUser({ ...this.state, dateAdded: new Date() });
-    this.setState(userData);
+
+    if (this.handleValidation()) {
+      this.props.addUser({ ...this.state, dateAdded: new Date() });
+      this.setState(userData)
+    } else {
+      console.log("Form has errors.")
+    }
+
   }
+
+  handleValidation() {
+    let fields = this.state;
+    let errors = {};
+    let formIsValid = true;
+
+    //Name
+    if (!fields.userName) {
+      formIsValid = false;
+      errors["userName"] = "Cannot be empty";
+    }
+
+    //only letters
+    if (typeof fields.userName !== "undefined") {
+      if (!fields.userName.match(/^[a-zA-Z]+$/)) {
+        formIsValid = false;
+      } 
+    }
+
+    return formIsValid;
+  }
+
 
   render() {
     return (
@@ -68,17 +96,18 @@ class Registration extends Component {
             value={this.state.userName}
             onChange={this.handleChange}
             label="Name" />
-          <InputLabel>Gender</InputLabel>
-          <select
+          <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
             className="Registration_Input"
             id="demo-simple-select"
             value={this.state.userGender}
             onChange={this.handleChange}
             name="userGender"
           >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
+            <MenuItem value="Male">Male</MenuItem>
+            <MenuItem value="Female">Female</MenuItem>
+          </Select>
           <TextField
             className="Registration_Input"
             value={this.state.userCreditCard}
@@ -112,6 +141,9 @@ class Registration extends Component {
               value={this.state.userCoupon}
               onChange={this.handleChange}
               label="Loyalty"
+              InputProps={{
+                inputComponent: TextMaskCustom
+              }}
             /> : null}
 
           <Button
