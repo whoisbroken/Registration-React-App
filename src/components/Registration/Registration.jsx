@@ -7,8 +7,10 @@ import {
   FormControlLabel,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
+  Snackbar
 } from '@material-ui/core';
+import { Alert } from "@material-ui/lab"
 
 import InputMask from "react-input-mask";
 
@@ -36,7 +38,11 @@ const TextMaskCustom = (props) => {
 class Registration extends Component {
   constructor(props) {
     super(props);
-    this.state = {...userData};
+    this.state = {
+      ...userData,
+      showSuccessAlert: false,
+      showErrorAlert: false
+    };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -55,9 +61,14 @@ class Registration extends Component {
 
     if (this.handleValidation()) {
       this.props.addUser({ ...this.state, dateAdded: new Date() });
-      this.setState(userData)
+      this.setState({
+        userData,
+        showSuccessAlert: true
+      })
     } else {
-      console.log("Form has errors.")
+      this.setState({
+        showErrorAlert: true
+      })
     }
 
   }
@@ -77,10 +88,20 @@ class Registration extends Component {
     if (typeof fields.userName !== "undefined") {
       if (!fields.userName.match(/^[a-zA-Z]+$/)) {
         formIsValid = false;
-      } 
+      }
     }
 
     return formIsValid;
+  }
+
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    this.setState({
+      showSuccessAlert: false,
+      showErrorAlert: false
+    })
   }
 
 
@@ -95,7 +116,8 @@ class Registration extends Component {
             name="userName"
             value={this.state.userName}
             onChange={this.handleChange}
-            label="Name" />
+            label="Name"
+          />
           <InputLabel id="demo-simple-select-label">Gender</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -153,6 +175,24 @@ class Registration extends Component {
             color="primary"
           >Send</Button>
         </form>
+        <Snackbar open={this.state.showSuccessAlert} autoHideDuration={4000} onClose={this.handleClose}>
+          <Alert
+            variant="outlined"
+            severity="success"
+            onClose={this.handleClose}
+          >
+            User added!
+        </Alert>
+        </Snackbar>
+        <Snackbar open={this.state.showErrorAlert} autoHideDuration={4000} onClose={this.handleClose}>
+          <Alert
+            variant="outlined"
+            severity="error"
+            onClose={this.handleClose}
+          >
+            Something went wrong!
+        </Alert>
+        </Snackbar>
       </div>
     );
   }
