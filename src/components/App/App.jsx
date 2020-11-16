@@ -14,9 +14,14 @@ import Registration from "../Registration/Registration";
 import About from "../About/About";
 
 class App extends Component {
-  state = {
-    users: [],
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      users: []
+    }
   }
+
 
   addUser = (user) => {
     this.setState((prevState) => {
@@ -26,7 +31,7 @@ class App extends Component {
     });
   };
 
-  
+
 
   render() {
     return (
