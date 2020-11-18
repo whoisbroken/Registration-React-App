@@ -41,8 +41,7 @@ class Registration extends Component {
     this.state = {
       ...userData,
       showSuccessAlert: false,
-      showErrorAlert: false,
-      rememberMe: true
+      showErrorAlert: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -61,10 +60,17 @@ class Registration extends Component {
   handleSubmit = () => {
 
     if (this.handleValidation()) {
-      const { userName, rememberMe } = this.state;
+      // const { userName, userGender, userCreditCard, withLoyalty, userCoupon, dateAdded } = this.state;
+      // const user = {
+      //   userName,
+      //   userGender,
+      //   userCreditCard,
+      //   withLoyalty,
+      //   userCoupon,
+      //   dateAdded
+      // }
 
-      localStorage.setItem('rememberMe', rememberMe);
-      localStorage.setItem('user', rememberMe ? userName : '');
+      // localStorage.setItem('users', JSON.stringify(user));
 
       this.props.addUser({ ...this.state, dateAdded: new Date() });
       this.setState({

@@ -19,9 +19,16 @@ class App extends Component {
 
     this.state = {
       users: []
-    }
   }
-
+}
+  
+  componentDidMount() {
+    // let user = JSON.parse(localStorage.getItem('users')) || [];
+    
+    // this.setState({
+    //   users: user
+    // })  
+  }
 
   addUser = (user) => {
     this.setState((prevState) => {
@@ -30,8 +37,6 @@ class App extends Component {
       };
     });
   };
-
-
 
   render() {
     return (
