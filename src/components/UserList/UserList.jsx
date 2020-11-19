@@ -16,7 +16,7 @@ const UserList = ({ users }) => {
               <p className="User_Text">Loyalty: yes</p> : null}
             {user.userCoupon ?
               <p className="User_Text">Coupon: {user.userCoupon}</p> : null}
-            <p className="User_Text">date added: {user.dateAdded.toString().slice(4, 24)}</p>
+            <p className="User_Text">date added: {user.dateAdded}</p>
           </li>
         )
       })}

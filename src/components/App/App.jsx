@@ -19,23 +19,25 @@ class App extends Component {
 
     this.state = {
       users: []
-  }
-}
-  
-  componentDidMount() {
-    // let user = JSON.parse(localStorage.getItem('users')) || [];
-    
-    // this.setState({
-    //   users: user
-    // })  
+    }
   }
 
+  componentDidMount() {
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+
+      this.setState((prevState) => ({
+          users: [...prevState.users, ...users]
+      }))
+  } 
+
   addUser = (user) => {
-    this.setState((prevState) => {
-      return {
-        users: [...prevState.users, { ...user }],
-      };
-    });
+    this.setState((prevState) => ({
+      users: [...prevState.users, { ...user }],
+    }),
+      () => {
+        localStorage.setItem('users', JSON.stringify(this.state.users));
+      }
+    );
   };
 
   render() {

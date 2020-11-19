@@ -60,19 +60,8 @@ class Registration extends Component {
   handleSubmit = () => {
 
     if (this.handleValidation()) {
-      // const { userName, userGender, userCreditCard, withLoyalty, userCoupon, dateAdded } = this.state;
-      // const user = {
-      //   userName,
-      //   userGender,
-      //   userCreditCard,
-      //   withLoyalty,
-      //   userCoupon,
-      //   dateAdded
-      // }
 
-      // localStorage.setItem('users', JSON.stringify(user));
-
-      this.props.addUser({ ...this.state, dateAdded: new Date() });
+      this.props.addUser({ ...this.state, dateAdded: new Date().toString().slice(4, 24) });
       this.setState({
         userData,
         showSuccessAlert: true
